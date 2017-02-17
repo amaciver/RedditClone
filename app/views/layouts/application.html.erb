@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RedditClone</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if logged_in? %>
+    <%= button_to "Sign Out", session_url, method: :delete %>
+  <% else %>
+   <%= button_to "Sign In", new_session_url, method: :get %>
+  <% end %>
+
+  <% if flash %>
+    <% flash.each do |key, value| %>
+      <p> <%= key %>: <%= value %> </p>
+    <% end %>
+  <% end %>
+  <br><br>
+<%= yield %>
+
+</body>
+</html>
