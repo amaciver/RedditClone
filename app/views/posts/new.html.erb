@@ -1,8 +1,17 @@
 <h1>New Post!</h1>
 
-<form action=" <%= sub_posts_url %>  " method="post">
+<form action=" <%= posts_url %>  " method="post">
   <%= auth_token %>
 
+  <% Sub.all.each do |sub| %>
+    <label>
+      <input type="checkbox" name="post[sub_ids][]" value="<%= sub.id %>">
+      <%= sub.title %>
+    </label>
+    <br>
+  <% end %>
+
+  <br><br>
 
   <label for="post_title">Title: </label>
   <input id="post_title" type="text" name="post[title]" value="">

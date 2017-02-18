@@ -1,9 +1,11 @@
-<h2>From: <%= @post.sub.title %> </h2>
+
 
 <h1><%= link_to @post.title, @post.url|| post_url(@post) %></h1>
 
 
 <p> <%= @post.content %> </p>
+
+<%= render 'comments/form', post: @post  %>
 
 <% if current_user == @post.author %>
 <%= button_to "Edit", edit_post_url(@post), method: :get %>

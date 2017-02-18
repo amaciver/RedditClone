@@ -5,7 +5,10 @@
 <% if current_user == @sub.moderator %>
 <%= button_to "Edit", edit_sub_url(@sub), method: :get %>
 <% end %>
-
+<br>
+<% if logged_in? %>
+  <%= button_to "Add Post", new_post_url, method: :get %>
+<% end %>
 <ul>
   <% @sub.posts.each do |post| %>
   <li> <%= link_to post.title, post_url(post) %></li>

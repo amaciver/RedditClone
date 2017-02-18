@@ -4,6 +4,18 @@
   <%= auth_token %>
   <input type="hidden" name="_method" value="PATCH">
 
+  <input type="hidden" name="post[sub_ids][]" value="">
+  <% Sub.all.each do |sub| %>
+    <label>
+      <input type="checkbox"
+        name="post[sub_ids][]"
+        value="<%= sub.id %>"
+        <%= "checked" if @post.sub_ids.include?(sub.id) %> >
+      <%= sub.title %>
+    </label>
+    <br>
+  <% end %>
+
 
   <label for="post_title">Title: </label>
   <input id="post_title" type="text" name="post[title]" value=" <%= @post.title %>">
